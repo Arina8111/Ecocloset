@@ -1,0 +1,9 @@
+Flask
+pandas
+torch
+Pillow
+transformers
+torchvision
+selenium
+webdriver-manager
+requests
