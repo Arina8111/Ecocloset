@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOCLOSET</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main class="page-shell">
+        <h1>ECOCLOSET</h1>
+        <form class="upload-panel" method="POST" enctype="multipart/form-data">
+            <label for="image-upload" class="upload-label">Upload an image</label>
+            <input
+                id="image-upload"
+                class="upload-input"
+                type="file"
+                name="file"
+            >
+            <label for="image-url" class="upload-label">Or paste an image URL</label>
+            <input
+                id="image-url"
+                class="url-input"
+                type="url"
+                name="image_url"
+                placeholder="https://example.com/image.jpg"
+            >
+
+            <div class="inline-field">
+                <label for="number-of-uses" class="upload-label secondary-label">condition</label>
+                <select
+                    id="number-of-uses"
+                    class="url-input compact-input"
+                    name="condition"
+                >
+                    <option value="" selected disabled>Select condition</option>
+                    <option value="new">new</option>
+                    <option value="good">good</option>
+                    <option value="worn">worn</option>
+                    <option value="damaged">damaged</option>
+                </select>
+            </div>
+
+            <div class="inline-field">
+                <label for="purchase-time" class="upload-label secondary-label">estimated lifespan</label>
+                <select
+                    id="purchase-time"
+                    class="url-input compact-input"
+                    name="lifespan"
+                >
+                    <option value="" selected disabled>Select lifespan</option>
+                    <option value="6_months">less than 6 months</option>
+                    <option value="6_12_months">6 to 12 months</option>
+                    <option value="1_3_years">1 to 3 years</option>
+                    <option value="3_years">more than 3 years</option>
+                </select>
+            </div>
+            <div class="inline-field">
+                <label for="purchase-time" class="upload-label secondary-label">frequency of usage</label>
+                <select
+                    id="purchase-time"
+                    class="url-input compact-input"
+                    name="no_of_uses"
+                >
+                    <option value="" selected disabled>Select frequency</option>
+                    <option value="frequent">frequent</option>
+                    <option value="sometimes">sometimes</option>
+                    <option value="rare">rare</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </main>
+</body>
+</html>
