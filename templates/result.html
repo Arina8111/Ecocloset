@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rewear result</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main class="page-shell result-page-shell">
+        <h1>ECOCLOSET</h1>
+
+        <section class="upload-panel result-panel">
+            <div class="result-top-row">
+                <div class="result-media">
+                    {% if uploaded_image_src %}
+                    <img class="result-image" src="{{ uploaded_image_src }}" alt="Uploaded clothing preview">
+                    {% else %}
+                    <div class="result-image result-image-placeholder">No image uploaded</div>
+                    {% endif %}
+                </div>
+
+                <div class="result-content">
+                    <p class="result-kicker"><strong>Results</strong></p>
+                    <div class="score-circle" style="--score: {{ s_score }};">
+                        <span class="score-circle-value">{{s_score}}</span>
+                        <span class="score-circle-label">Eco Score</span>
+                    </div>
+                    <h3 class="result-stat">Fabric type is {{FabricType}}</h3>
+                    <h3 class="result-stat">Clothing Type is {{Clothingtype}}</h3>
+                    <h3 class="result-stat">Durability score is {{durability}}</h3>
+                    <h3 class="result-stat">Suggested action is {{suggest.get("action")}}</h3>
+                    
+                </div>
+            </div>
+
+            <div class="result-map-panel">
+                <div class="result-map-layout">
+                    <div class="result-map-text">
+                        <p class="result-description">Tips</p>
+                        <p class="result-description">{{suggest.get("message")}}</p>
+                        <ul class="result-list">
+                            
+                            {% for item in suggest.get("tips")%}
+                            <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                        <a class="submit-button" href="{{ url_for('home') }}">Back</a>
+                    </div>
+                    <iframe
+                        class="result-map"
+                        title="Map"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=72.77%2C18.88%2C77.77%2C21.88&amp;layer=mapnik"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
